@@ -15,8 +15,16 @@ public abstract class Jugador {
         return true;
     }
 
+    public boolean lost() {
+        for (Barco barco: barcos) {
+            if (!barco.isHundido()) {
+                return false;
+            }
+        }
+        return true;
+    }
     public boolean isInTablero(int x, int y) {
-        return x >= 0 && y < Tablero.height && x < Tablero.width && y >= 0;
+        return x >= 0 && y < Tablero.HEIGHT && x < Tablero.WIDTH && y >= 0;
     }
 
     public boolean fitsInTablero(Barco barco, int x, int y) {

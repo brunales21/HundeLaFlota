@@ -11,15 +11,25 @@ public class JugadorHumano extends Jugador {
 
     @Override
     public void colocarBarcos() {
+        String rspt = "";
         int letra;
         int num;
         int contador = 0;
         for (var barco : getBarcos()) {
-            getTablero().showTablero();
             contador++;
+            getTablero().showTablero();
+            barco.mostrarBarco();
             do {
+                rspt = sc.nextLine();
+                while (rspt.equals("")) {
+                    GameManager.limpiarConsola();
+                    getTablero().showTablero();
+                    barco.rotarBarco();
+                    barco.mostrarBarco();
+                    rspt = sc.nextLine();
+                }
                 System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
-                String posicion = sc.nextLine().replace(" ", "").toUpperCase();
+                String posicion = rspt.replace(" ", "").toUpperCase();
                 letra = posicion.charAt(0)-'A';
                 num = posicion.charAt(1)-'0';
             } while (!colocarBarco(barco, letra, num));

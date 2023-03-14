@@ -1,7 +1,7 @@
 public class Tablero {
-    public final static int width = 10;
-    public final static int height = 10;
-    private Casilla[][] casillas = new Casilla[width][height];
+    public final static int WIDTH = 10;
+    public final static int HEIGHT = 10;
+    private Casilla[][] casillas = new Casilla[WIDTH][HEIGHT];
 
 
     public void showTablero() {

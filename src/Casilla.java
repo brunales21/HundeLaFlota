@@ -1,6 +1,6 @@
 public class Casilla {
     private boolean selected = false;
-    private SuperString skin = new SuperString("~~", Color.BLUE_BOLD_BRIGHT);;
+    private SuperString skin = new SuperString("~ ", Color.BLUE_BOLD_BRIGHT);;
     private ParteDeBarco pdb;
 
     public Casilla(ParteDeBarco pdb) {
@@ -8,6 +8,12 @@ public class Casilla {
     }
 
     public Casilla() {
+
+    }
+
+    public Casilla(String simbolo, String color) {
+        this.skin.setSimbolo(simbolo);
+        this.skin.setColor(color);
 
     }
 
@@ -23,7 +29,6 @@ public class Casilla {
         this.skin.setColor(Color.RED);
         if (pdb != null) {
             this.pdb.damage();
-
         }
     }
 
