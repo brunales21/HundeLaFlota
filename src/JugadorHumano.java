@@ -11,13 +11,16 @@ public class JugadorHumano extends Jugador {
 
     @Override
     public void colocarBarcos() {
+        GameManager.limpiarConsola();
         String rspt = "";
         int letra;
         int num;
         int contador = 0;
         for (var barco : getBarcos()) {
+            GameManager.limpiarConsola();
             contador++;
             getTablero().showTablero();
+            System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
             barco.mostrarBarco();
             do {
                 rspt = sc.nextLine();
@@ -28,7 +31,6 @@ public class JugadorHumano extends Jugador {
                     barco.mostrarBarco();
                     rspt = sc.nextLine();
                 }
-                System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
                 String posicion = rspt.replace(" ", "").toUpperCase();
                 letra = posicion.charAt(0)-'A';
                 num = posicion.charAt(1)-'0';
@@ -39,11 +41,17 @@ public class JugadorHumano extends Jugador {
 
     @Override
     public void lanzarBomba(Jugador jugador) {
-        String posicion = sc.nextLine().replaceAll(" ", "").toUpperCase();
-        int letra = posicion.charAt(0)-'A';
-        int num = posicion.charAt(1)-'0';
+        String posicion = "";
+        int letra;
+        int num;
+        do {
+            posicion = sc.nextLine().replaceAll(" ", "").toUpperCase();
+            letra = posicion.charAt(0)-'A';
+            num = posicion.charAt(1)-'0';
+        } while (letra>10 || letra<0 || num<0 || num>10);
         Casilla casillaAfectada = jugador.getTablero().getCasillas()[letra][num];
         casillaAfectada.select();
+        System.out.println("casilla selected");
         if (casillaAfectada.isPdb() && casillaAfectada.getPdb().getBarco().isHundido()) {
             casillaAfectada.getPdb().getBarco().setBarcoToHundido();
         }

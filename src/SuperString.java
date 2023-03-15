@@ -7,6 +7,21 @@ public class SuperString {
         this.color = color;
     }
 
+    public void setColorToNotBold() {
+        StringBuilder sb = new StringBuilder(color);
+        sb.replace(2, 3, "0");
+
+        this.color = sb.toString();
+    }
+
+    public void setColorToBold() {
+        StringBuilder sb = new StringBuilder(color);
+        sb.replace(2, 3, "1");
+
+        this.color = sb.toString();
+    }
+
+
     public String getSimbolo() {
         return simbolo;
     }

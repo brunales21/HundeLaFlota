@@ -6,7 +6,8 @@ public class ParteDeBarco {
     private int y;
 
 
-    public ParteDeBarco(int x, int y) {
+    public ParteDeBarco(SuperString skin, int x, int y) {
+        this.skin = skin;
         this.x = x;
         this.y = y;
     }
@@ -29,6 +30,7 @@ public class ParteDeBarco {
 
     public void damage() {
         damaged = true;
+        this.skin.setColor(Color.RED_BOLD);
     }
 
     public boolean isDamaged() {
@@ -49,5 +51,10 @@ public class ParteDeBarco {
 
     public void setSkin(SuperString skin) {
         this.skin = skin;
+    }
+
+    @Override
+    public String toString() {
+        return skin.toString();
     }
 }

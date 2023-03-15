@@ -22,13 +22,14 @@ public class GameManager {
     }
 
     public void mostrarTableros() {
+        limpiarConsola();
         for (int i = 0; i < jugadores.length; i++) {
             jugadores[i].getTablero().showTablero();
             System.out.println(Color.RESET + "Barcos disponibles: " + jugadores[i].getCantidadDeBarcos());
             if (i == jugadores.length - 1) {
                 return;
             }
-            System.out.println(Color.WHITE_BOLD_BRIGHT + "--------------------------------");
+            System.out.println(Color.WHITE_BOLD_BRIGHT + "-----------------------");
         }
     }
 

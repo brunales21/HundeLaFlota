@@ -10,6 +10,8 @@ public abstract class Jugador {
             return false;
         }
         for (var parte : barco.getPartes()) {
+            parte.getSkin().setColorToBold();
+            parte.getSkin().setSimbolo("# ");
             getTablero().getCasillas()[parte.getX()+x][parte.getY()+y].setPdb(parte);
         }
         return true;

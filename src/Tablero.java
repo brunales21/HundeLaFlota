@@ -9,13 +9,13 @@ public class Tablero {
         int[] numeros = getNumeros();
         System.out.print(" ");
         for (int i = 0; i < 10; i++) {
-            System.out.print(Color.RESET+" "+numeros[i]+" ");
+            System.out.print(Color.WHITE_BOLD_BRIGHT+" "+numeros[i]+"");
         }
         System.out.println();
         for (int i = 0; i < 10; i++) {
-            System.out.print(Color.RESET+letras[i]);
+            System.out.print(Color.WHITE_BOLD_BRIGHT+letras[i]+" ");
             for (int j = 0; j < casillas.length; j++) {
-                System.out.print(" "+casillas[i][j]);
+                System.out.print(""+casillas[i][j]);
             }
             System.out.println();
         }

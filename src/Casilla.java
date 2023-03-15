@@ -50,6 +50,6 @@ public class Casilla {
 
     @Override
     public String toString() {
-        return pdb != null ? pdb.getBarco().getSkin().toString() : skin.toString();
+        return pdb != null ? pdb.toString() : skin.toString();
     }
 }

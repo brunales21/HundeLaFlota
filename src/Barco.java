@@ -1,3 +1,5 @@
+import java.util.function.IntFunction;
+
 public class Barco {
     private final ParteDeBarco[] partes;
     private final SuperString skin;
@@ -11,41 +13,16 @@ public class Barco {
             parte.setBarco(this);
         }
     }
-/*
-    public int getWidth() {
-        int maxW = 0;
-        for (ParteDeBarco parte: partes) {
-            if (parte.getX()>maxW) {
-                maxW = parte.getX();
-            }
-        }
-        return maxW;
-    }
-
-    public int getHeight() {
-        int maxH = 0;
-        for (ParteDeBarco parte: partes) {
-            if (parte.getY()>maxH) {
-                maxH = parte.getY();
-            }
-        }
-        return maxH;
-    }
-
- */
 
     public void mostrarBarco() {
         Casilla[][] tBarco = new Casilla[8][20];
         for (int i = 0; i < tBarco.length; i++) {
             for (int j = 0; j < tBarco[i].length; j++) {
-                tBarco[i][j] = new Casilla("o ", Color.RESET);
+                tBarco[i][j] = new Casilla("  ", Color.RESET);
             }
         }
         for (int p = 0; p<partes.length; p++) {
-            if (p == 0) {
-                tBarco[3+this.partes[p].getX()][7+this.partes[p].getY()].setPdb(partes[p]);
-            }
-            tBarco[3+this.partes[p].getX()][7+this.partes[p].getY()].setPdb(partes[p]);
+            tBarco[4+this.partes[p].getX()][4+this.partes[p].getY()].setPdb(partes[p]);
         }
         for (int i = 0; i < tBarco.length; i++) {
             for (int j = 0; j < tBarco[i].length; j++) {
@@ -57,6 +34,10 @@ public class Barco {
 
     public Barco rotarBarco() {
         for (ParteDeBarco parte: partes) {
+            if (parte.getX()==0&&parte.getY()==0) {
+                parte.getSkin().setColorToBold();
+                parte.getSkin().setSimbolo("X ");
+            }
             int aux = parte.getX();
             parte.setX(parte.getY());
             parte.setY(-aux);
@@ -69,7 +50,7 @@ public class Barco {
     }
     public void setBarcoToHundido() {
         this.isHundido = true;
-        this.skin.setColor(Color.RED_BOLD_BRIGHT);
+        this.skin.setColor(Color.PURPLE);
     }
 
     public SuperString getSkin() {
@@ -80,14 +61,6 @@ public class Barco {
         return partes.length == getPdbHundidasCount();
     }
 
-    public boolean isHundido2() {
-        for (ParteDeBarco parte: partes) {
-            if (!parte.isDamaged()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
 
     public int getPdbHundidasCount() {

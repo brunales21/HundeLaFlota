@@ -3,20 +3,45 @@ public class Main {
 
         GameManager gm = new GameManager();
         FabricaDeBarcos fb = new FabricaDeBarcos();
+
         Jugador jh = new JugadorHumano(fb.getNewBarcos());
         Jugador jb = new JugadorBot(fb.getNewBarcos());
 
-        gm.addPlayer(jh);
         gm.addPlayer(jb);
-        gm.initTableros();
-        jh.colocarBarcos();
-        jb.colocarBarcos();
-        do {
+        gm.addPlayer(jh);
 
+        gm.initTableros();
+        jb.colocarBarcos();
+
+        do {
             gm.mostrarTableros();
+            jh.lanzarBomba(jb);
+            System.out.println("hola");
+
         } while (true);
 
+/*
+        GameManager gm = new GameManager();
+        FabricaDeBarcos fb = new FabricaDeBarcos();
 
+        Jugador jh = new JugadorHumano(fb.getNewBarcos());
+        Jugador jb = new JugadorBot(fb.getNewBarcos());
+
+        gm.addPlayer(jb);
+        gm.addPlayer(jh);
+
+        gm.initTableros();
+        jb.colocarBarcos();
+        jh.colocarBarcos();
+
+        do {
+            gm.mostrarTableros();
+            jh.lanzarBomba(jb);
+            jb.lanzarBomba(jh);
+
+        } while (true);
+
+ */
 
 
 
