@@ -19,7 +19,7 @@ public class JugadorHumano extends Jugador {
         int contador = 0;
         for (var barco : getBarcos()) {
             GameManager.limpiarConsola();
-            System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
+            //System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
             contador++;
             getTablero().showTablero();
             barco.mostrarBarco();

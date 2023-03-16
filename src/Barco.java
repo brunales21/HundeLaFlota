@@ -52,7 +52,7 @@ public class Barco {
     public void setBarcoToHundido() {
         this.isHundido = true;
         for (ParteDeBarco parte: partes) {
-            parte.getSkin().setBackgroundColorToNormal();
+            parte.getSkin().setBackgroundColor(Color.RED_BACKGROUND);
         }
     }
 

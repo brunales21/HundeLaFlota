@@ -11,17 +11,27 @@ public class GameManager {
                 flag = !flag;
                 for (int k = 0; k < Tablero.HEIGHT; k++) {
                     jugadores[i].getTablero().getCasillas()[j][k] = new Casilla();
-                    if (flag) {
-                        jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.CYAN_BACKGROUND_BRIGHT);
+                    if (jugadores[i].getClass().getName().equals(JugadorHumano.class.getName())) {
+                        if (flag) {
+                            jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.BLUE_BACKGROUND);
+                        } else {
+                            jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.BLUE_BACKGROUND);
+                        }
                     } else {
-                        jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.BLUE_BACKGROUND_BRIGHT);
+                        if (flag) {
+                            jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.WHITE_BACKGROUND);
+                        } else {
+                            jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.WHITE_BACKGROUND_BRIGHT);
+                        }
                     }
+
                     System.out.print(jugadores[i].getTablero().getCasillas()[j][k]);
                     flag = !flag;
                 }
             }
         }
     }
+
 
     public void addPlayer(Jugador jugador) {
         if (cantidadJugadores < MAX_JUGADORES) {

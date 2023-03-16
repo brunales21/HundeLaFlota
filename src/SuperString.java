@@ -5,20 +5,7 @@ public class SuperString {
     private String color;
     private String backgroundColor = "";
 
-    public static void main(String[] args) {
 
-        SuperString ss = new SuperString("o", Color.BLACK_BOLD, Color.YELLOW_BACKGROUND);
-        System.out.println(ss.toString());
-        ss.setBackgroundColorToBright();
-        System.out.println(ss.toString());
-        ss.setBackgroundColorToNormal();
-        System.out.println(ss.toString());
-
-
-
-
-
-    }
     public SuperString(String simbolo, String color) {
         this.simbolo = simbolo;
         this.color = color;

@@ -23,8 +23,16 @@ public class JugadorBot extends Jugador {
 
     @Override
     public void lanzarBomba(Jugador jugador) {
-        int posicionX = random.nextInt(10);
-        int posicionY = random.nextInt(10);
-        jugador.getTablero().getCasillas()[posicionX][posicionY].select();
+        int posicionX, posicionY;
+        Casilla casillaAfectada;
+        do {
+            posicionX = random.nextInt(10);
+            posicionY = random.nextInt(10);
+            casillaAfectada = jugador.getTablero().getCasillas()[posicionX][posicionY];
+        } while (casillaAfectada.isSelected());
+        casillaAfectada.select();
+        if (casillaAfectada.isPdb() && casillaAfectada.getPdb().getBarco().isHundido()) {
+            casillaAfectada.getPdb().getBarco().setBarcoToHundido();
+        }
     }
 }
