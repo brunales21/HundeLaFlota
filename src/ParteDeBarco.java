@@ -33,8 +33,8 @@ public class ParteDeBarco {
         damaged = true;
         if (hidden) {
             hidden = false;
-            skin.setBackgroundColor(Color.RED_BACKGROUND_BRIGHT);
         }
+        skin.setBackgroundColor(Color.RED_BACKGROUND_BRIGHT);
 
     }
 
