@@ -13,6 +13,9 @@ public class JugadorBot extends Jugador {
         int posicionX;
         int posicionY;
         for (var barco : getBarcos()) {
+            for (int i = 0; i <= random.nextInt(4); i++) {
+                barco.rotarBarco();
+            }
             do {
                 posicionX = random.nextInt(10);
                 posicionY = random.nextInt(10);

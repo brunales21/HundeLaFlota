@@ -30,12 +30,11 @@ public class ParteDeBarco {
     }
 
     public void damage() {
+        damaged = true;
         if (hidden) {
             hidden = false;
-        } else {
             skin.setBackgroundColor(Color.RED_BACKGROUND_BRIGHT);
         }
-        damaged = true;
 
     }
 

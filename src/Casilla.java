@@ -25,10 +25,12 @@ public class Casilla {
 
     public void select() {
         this.selected = true;
-        this.skin.setBackgroundColor(Color.BLUE_BACKGROUND_BRIGHT);
 
         if (isPdb()) {
             this.pdb.damage();
+        } else {
+            this.skin.setSimbolo("~ ");
+            this.skin.setBackgroundColor(Color.BLUE_BACKGROUND);
         }
     }
 

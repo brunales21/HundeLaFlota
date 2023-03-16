@@ -43,14 +43,15 @@ public class JugadorHumano extends Jugador {
     @Override
     public void lanzarBomba(Jugador jugador) {
         String posicion = "";
+        Casilla casillaAfectada;
         int letra;
         int num;
         do {
             posicion = sc.nextLine().replaceAll(" ", "").toUpperCase();
             letra = posicion.charAt(0)-'A';
             num = posicion.charAt(1)-'0';
-        } while (letra>10 || letra<0 || num<0 || num>10);
-        Casilla casillaAfectada = jugador.getTablero().getCasillas()[letra][num];
+            casillaAfectada = jugador.getTablero().getCasillas()[letra][num];
+        } while (casillaAfectada.isSelected() || letra>10 || letra<0 || num<0 || num>10);
         casillaAfectada.select();
         if (casillaAfectada.isPdb() && casillaAfectada.getPdb().getBarco().isHundido()) {
             casillaAfectada.getPdb().getBarco().setBarcoToHundido();
