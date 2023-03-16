@@ -35,6 +35,7 @@ public class JugadorHumano extends Jugador {
                 String posicion = rspt.replace(" ", "").toUpperCase();
                 letra = posicion.charAt(0)-'A';
                 num = posicion.charAt(1)-'0';
+
             } while (!colocarBarco(barco, false, letra, num));
 
         }
@@ -51,6 +52,9 @@ public class JugadorHumano extends Jugador {
             letra = posicion.charAt(0)-'A';
             num = posicion.charAt(1)-'0';
             casillaAfectada = jugador.getTablero().getCasillas()[letra][num];
+            if (casillaAfectada.isSelected()) {
+                System.out.println("Esta casilla ya esta usada.");
+            }
         } while (casillaAfectada.isSelected() || letra>10 || letra<0 || num<0 || num>10);
         casillaAfectada.select();
         if (casillaAfectada.isPdb() && casillaAfectada.getPdb().getBarco().isHundido()) {

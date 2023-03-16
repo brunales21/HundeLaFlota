@@ -13,7 +13,7 @@ public abstract class Jugador {
         for (var parte : barco.getPartes()) {
             if (parte.getX()==0 && parte.getY()==0) {
                 //parte.getSkin().setBackgroundColorToNormal();
-                parte.getSkin().setSimbolo("  ");
+                parte.getSkin().setBackgroundColorToBright();
             }
             getTablero().getCasillas()[parte.getX()+x][parte.getY()+y].setPdb(parte);
             getTablero().getCasillas()[parte.getX()+x][parte.getY()+y].getPdb().setVisibility(isHidden);
@@ -31,12 +31,20 @@ public abstract class Jugador {
         return true;
     }
     public boolean isInTablero(int x, int y) {
-        return x >= 0 && y < Tablero.HEIGHT && x < Tablero.WIDTH && y >= 0;
+        if (x >= 0 && y < Tablero.HEIGHT && x < Tablero.WIDTH && y >= 0) {
+            return true;
+        }
+        System.out.println("Posicion no valida. Fuera del tablero");
+        return false;
     }
 
     public boolean fitsInTablero(Barco barco, int x, int y) {
         for (var partes: barco.getPartes()) {
-            if (!isInTablero(x + partes.getX(), y + partes.getY()) || tablero.getCasillas()[partes.getX() + x][partes.getY() + y].isPdb()) {
+            if (!isInTablero(x + partes.getX(), y + partes.getY())) {
+                return false;
+            }
+            if (tablero.getCasillas()[partes.getX() + x][partes.getY() + y].isPdb()) {
+                System.out.println("Posicion no valida. Se superpone con otro barco");
                 return false;
             }
         }

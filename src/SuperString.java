@@ -5,7 +5,16 @@ public class SuperString {
     private String color;
     private String backgroundColor = "";
 
-
+    public static void main(String[] args) {
+        SuperString ss = new SuperString("x ", Color.RESET, Color.BLACK_BACKGROUND);
+        System.out.println(ss.toString());
+        ss.setBackgroundColorToBright();
+        System.out.println();
+        System.out.println(ss.toString());
+        System.out.println();
+        ss.setBackgroundColorToNormal();
+        System.out.println(ss.toString());
+    }
     public SuperString(String simbolo, String color) {
         this.simbolo = simbolo;
         this.color = color;
@@ -17,6 +26,9 @@ public class SuperString {
         this.backgroundColor = backgroundColor;
     }
 
+    public boolean isBrigthBackground() {
+        return backgroundColor.length() == 8;
+    }
     public void setColorToNotBold() {
         StringBuilder sb = new StringBuilder(color);
         sb.replace(2, 3, "0");
