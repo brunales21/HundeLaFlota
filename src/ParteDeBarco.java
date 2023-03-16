@@ -2,6 +2,7 @@ public class ParteDeBarco {
     private Barco barco;
     private SuperString skin;
     private boolean damaged = false;
+    private boolean hidden = false;
     private int x;
     private int y;
 
@@ -30,7 +31,20 @@ public class ParteDeBarco {
 
     public void damage() {
         damaged = true;
-        this.skin.setColor(Color.RED_BOLD);
+        hidden = false;
+        this.skin.setBackgroundColor(Color.RED_BACKGROUND_BRIGHT);
+    }
+
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public void setVisibility(boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public void hide() {
+        this.hidden = true;
     }
 
     public boolean isDamaged() {

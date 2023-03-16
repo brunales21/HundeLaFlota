@@ -1,6 +1,6 @@
 public class Casilla {
     private boolean selected = false;
-    private SuperString skin = new SuperString("~ ", Color.BLUE_BOLD_BRIGHT);;
+    private SuperString skin = new SuperString("  ", Color.BLACK_BOLD, Color.BLUE_BACKGROUND_BRIGHT);
     private ParteDeBarco pdb;
 
     public Casilla(ParteDeBarco pdb) {
@@ -14,7 +14,6 @@ public class Casilla {
     public Casilla(String simbolo, String color) {
         this.skin.setSimbolo(simbolo);
         this.skin.setColor(color);
-
     }
 
     public boolean isDamaged() {
@@ -26,8 +25,9 @@ public class Casilla {
 
     public void select() {
         this.selected = true;
-        this.skin.setColor(Color.RED);
-        if (pdb != null) {
+        this.skin.setSimbolo("~ ");
+        this.skin.setColor(Color.PURPLE);
+        if (isPdb()) {
             this.pdb.damage();
         }
     }
@@ -50,6 +50,9 @@ public class Casilla {
 
     @Override
     public String toString() {
-        return pdb != null ? pdb.toString() : skin.toString();
+        if (!isPdb() || getPdb().isHidden()) {
+            return skin.toString();
+        }
+        return this.pdb.toString();
     }
 }

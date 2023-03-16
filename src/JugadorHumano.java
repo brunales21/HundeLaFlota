@@ -7,6 +7,7 @@ public class JugadorHumano extends Jugador {
 
     public JugadorHumano(Barco[] barcos) {
         super(barcos);
+        super.setNombre(sc.nextLine());
     }
 
     @Override
@@ -18,9 +19,9 @@ public class JugadorHumano extends Jugador {
         int contador = 0;
         for (var barco : getBarcos()) {
             GameManager.limpiarConsola();
+            System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
             contador++;
             getTablero().showTablero();
-            System.out.println(Color.RESET+"COLOCA EL BARCO "+contador);
             barco.mostrarBarco();
             do {
                 rspt = sc.nextLine();
@@ -34,7 +35,7 @@ public class JugadorHumano extends Jugador {
                 String posicion = rspt.replace(" ", "").toUpperCase();
                 letra = posicion.charAt(0)-'A';
                 num = posicion.charAt(1)-'0';
-            } while (!colocarBarco(barco, letra, num));
+            } while (!colocarBarco(barco, false, letra, num));
 
         }
     }
@@ -51,9 +52,12 @@ public class JugadorHumano extends Jugador {
         } while (letra>10 || letra<0 || num<0 || num>10);
         Casilla casillaAfectada = jugador.getTablero().getCasillas()[letra][num];
         casillaAfectada.select();
-        System.out.println("casilla selected");
         if (casillaAfectada.isPdb() && casillaAfectada.getPdb().getBarco().isHundido()) {
             casillaAfectada.getPdb().getBarco().setBarcoToHundido();
         }
+    }
+
+    public Scanner getSc() {
+        return sc;
     }
 }

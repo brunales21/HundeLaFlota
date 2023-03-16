@@ -5,10 +5,19 @@ public class GameManager {
     private int cantidadJugadores;
 
     public void initTableros() {
+        boolean flag = false;
         for (int i = 0; i < jugadores.length; i++) {
             for (int j = 0; j < Tablero.WIDTH; j++) {
+                flag = !flag;
                 for (int k = 0; k < Tablero.HEIGHT; k++) {
                     jugadores[i].getTablero().getCasillas()[j][k] = new Casilla();
+                    if (flag) {
+                        jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.CYAN_BACKGROUND_BRIGHT);
+                    } else {
+                        jugadores[i].getTablero().getCasillas()[j][k].getSkin().setBackgroundColor(Color.BLUE_BACKGROUND_BRIGHT);
+                    }
+                    System.out.print(jugadores[i].getTablero().getCasillas()[j][k]);
+                    flag = !flag;
                 }
             }
         }
@@ -25,7 +34,7 @@ public class GameManager {
         limpiarConsola();
         for (int i = 0; i < jugadores.length; i++) {
             jugadores[i].getTablero().showTablero();
-            System.out.println(Color.RESET + "Barcos disponibles: " + jugadores[i].getCantidadDeBarcos());
+            System.out.println(Color.RESET + "Barcos disponibles: " + jugadores[i].getCantidadBarcosFlotando());
             if (i == jugadores.length - 1) {
                 return;
             }
@@ -33,6 +42,24 @@ public class GameManager {
         }
     }
 
+    public void mostrarResultados() {
+        mostrarTableros();
+        saltosDeLinea(1);
+        for (Jugador jugador: jugadores) {
+            if (!jugador.lost()) {
+                System.out.println(Color.GREEN+"Ganador: "+Color.RESET+jugador.getNombre());
+            }
+            if (jugador.lost()) {
+                System.out.println(Color.RED+"Perdedor: "+Color.RESET+jugador.getNombre());
+            }
+        }
+    }
+
+    public void saltosDeLinea(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.println();
+        }
+    }
 
     public static void limpiarConsola() {
         System.out.print("\033[H\033[2J");

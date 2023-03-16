@@ -18,7 +18,8 @@ public class Barco {
         Casilla[][] tBarco = new Casilla[8][20];
         for (int i = 0; i < tBarco.length; i++) {
             for (int j = 0; j < tBarco[i].length; j++) {
-                tBarco[i][j] = new Casilla("  ", Color.RESET);
+                tBarco[i][j] = new Casilla();
+                tBarco[i][j].getSkin().setBackgroundColor("");
             }
         }
         for (int p = 0; p<partes.length; p++) {
@@ -35,8 +36,8 @@ public class Barco {
     public Barco rotarBarco() {
         for (ParteDeBarco parte: partes) {
             if (parte.getX()==0&&parte.getY()==0) {
-                parte.getSkin().setColorToBold();
-                parte.getSkin().setSimbolo("X ");
+                //parte.getSkin().setBackgroundColorToBright();
+                parte.getSkin().setSimbolo("x ");
             }
             int aux = parte.getX();
             parte.setX(parte.getY());
@@ -50,7 +51,9 @@ public class Barco {
     }
     public void setBarcoToHundido() {
         this.isHundido = true;
-        this.skin.setColor(Color.PURPLE);
+        for (ParteDeBarco parte: partes) {
+            parte.getSkin().setBackgroundColorToNormal();
+        }
     }
 
     public SuperString getSkin() {

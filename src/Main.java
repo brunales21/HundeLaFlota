@@ -12,13 +12,18 @@ public class Main {
 
         gm.initTableros();
         jb.colocarBarcos();
+        jh.colocarBarcos();
 
         do {
             gm.mostrarTableros();
             jh.lanzarBomba(jb);
-            System.out.println("hola");
+            jb.lanzarBomba(jh);
 
+            if (jh.lost() || jb.lost()) {
+                break;
+            }
         } while (true);
+        gm.mostrarResultados();
 
 /*
         GameManager gm = new GameManager();

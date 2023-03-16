@@ -1,18 +1,23 @@
 public abstract class Jugador {
+    private String nombre;
     private Tablero tablero = new Tablero();
     private Barco[] barcos;
 
     public Jugador(Barco[] barcos) {
         this.barcos = barcos;
     }
-    protected boolean colocarBarco(Barco barco, int x, int y) {
+    protected boolean colocarBarco(Barco barco, boolean isHidden, int x, int y) {
         if (!fitsInTablero(barco, x, y)) {
             return false;
         }
         for (var parte : barco.getPartes()) {
-            parte.getSkin().setColorToBold();
-            parte.getSkin().setSimbolo("# ");
+            if (parte.getX()==0 && parte.getY()==0) {
+                //parte.getSkin().setBackgroundColorToNormal();
+                parte.getSkin().setSimbolo("  ");
+            }
             getTablero().getCasillas()[parte.getX()+x][parte.getY()+y].setPdb(parte);
+            getTablero().getCasillas()[parte.getX()+x][parte.getY()+y].getPdb().setVisibility(isHidden);
+
         }
         return true;
     }
@@ -53,7 +58,7 @@ public abstract class Jugador {
     public void setBarcos(Barco[] barcos) {
         this.barcos = barcos;
     }
-    public int getCantidadDeBarcos() {
+    public int getCantidadBarcosFlotando() {
         int contador = 0;
         for (Barco barco: getBarcos()) {
             if (!barco.isHundido()) {
@@ -61,5 +66,13 @@ public abstract class Jugador {
             }
         }
         return contador;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

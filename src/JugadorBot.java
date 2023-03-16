@@ -5,6 +5,7 @@ public class JugadorBot extends Jugador {
 
     public JugadorBot(Barco[] barcos) {
         super(barcos);
+        super.setNombre("Computer");
     }
 
     @Override
@@ -15,7 +16,7 @@ public class JugadorBot extends Jugador {
             do {
                 posicionX = random.nextInt(10);
                 posicionY = random.nextInt(10);
-            } while (!colocarBarco(barco, posicionX, posicionY));
+            } while (!colocarBarco(barco, true, posicionX, posicionY));
         }
     }
 
