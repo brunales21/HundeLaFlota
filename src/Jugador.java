@@ -13,7 +13,7 @@ public abstract class Jugador {
             return false;
         }
         for (var parte : barco.getPartes()) {
-            if (!parte.getSkin().isBrigthBackground() && parte.getX() == 0 && parte.getY() == 0) {
+            if (parte.getX() == 0 && parte.getY() == 0) {
                 parte.getSkin().setBackgroundColorToBright();
             }
             getTablero().getCasillas()[parte.getX() + x][parte.getY() + y].setPdb(parte);
