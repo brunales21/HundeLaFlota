@@ -27,7 +27,7 @@ public class Main {
                 break;
             }
             gm.mostrarTableros();
-            gm.sleep(1);
+            GameManager.sleep(1);
             jb.lanzarBomba(jh);
             if (jh.lost()) {
                 break;
