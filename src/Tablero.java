@@ -21,6 +21,8 @@ public class Tablero {
         }
     }
 
+
+
     private static char[] getLetras() {
         char[] abecedario = new char[26];
         for (int i = 0; i < abecedario.length; i++) {

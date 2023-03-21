@@ -3,7 +3,7 @@ import jdk.swing.interop.SwingInterOpUtils;
 public class SuperString {
     private String simbolo;
     private String color;
-    private String backgroundColor = "";e7
+    private String backgroundColor = "";
 
     public SuperString(String simbolo, String color) {
         this.simbolo = simbolo;

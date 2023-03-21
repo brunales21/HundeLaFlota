@@ -5,7 +5,7 @@ public class JugadorBot extends Jugador {
 
     public JugadorBot(Barco[] barcos) {
         super(barcos);
-        super.setNombre("Computer");
+        super.setNombre(Color.RESET+"ROBOTS NAVY");
     }
 
     @Override
@@ -21,11 +21,13 @@ public class JugadorBot extends Jugador {
                 posicionY = random.nextInt(10);
             } while (!colocarBarco(barco, true, posicionX, posicionY));
         }
+        System.out.println("barcos bot colocados");
     }
 
 
     @Override
     public void lanzarBomba(Jugador jugador) {
+        tiros++;
         int posicionX, posicionY;
         Casilla casillaAfectada;
         do {
@@ -38,4 +40,6 @@ public class JugadorBot extends Jugador {
             casillaAfectada.getPdb().getBarco().setBarcoToHundido();
         }
     }
+
+
 }

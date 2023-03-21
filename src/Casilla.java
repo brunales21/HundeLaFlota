@@ -30,7 +30,7 @@ public class Casilla {
             this.pdb.damage();
         } else {
             this.skin.setSimbolo("~ ");
-            this.skin.setBackgroundColor(Color.BLUE_BACKGROUND);
+            this.skin.setBackgroundColor(Color.BLUE_BACKGROUND_BRIGHT);
         }
     }
 
@@ -53,6 +53,7 @@ public class Casilla {
     public void setPdb(ParteDeBarco pdb) {
         this.pdb = pdb;
     }
+
 
     @Override
     public String toString() {

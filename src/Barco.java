@@ -2,13 +2,11 @@ import java.util.function.IntFunction;
 
 public class Barco {
     private final ParteDeBarco[] partes;
-    private final SuperString skin;
     private boolean isHundido = false;
 
 
-    public Barco(SuperString skin, ParteDeBarco[] partes) {
+    public Barco(ParteDeBarco[] partes) {
         this.partes = partes;
-        this.skin = skin;
         for (var parte: partes) {
             parte.setBarco(this);
         }
@@ -53,12 +51,10 @@ public class Barco {
         this.isHundido = true;
         for (ParteDeBarco parte: partes) {
             parte.getSkin().setBackgroundColor(Color.RED_BACKGROUND);
+
         }
     }
 
-    public SuperString getSkin() {
-        return skin;
-    }
 
     public boolean isHundido() {
         return partes.length == getPdbHundidasCount();
