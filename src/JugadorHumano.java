@@ -60,7 +60,7 @@ public class JugadorHumano extends Jugador {
             System.out.print("Coordenada de lanzamiento: ");
             posicion = sc.nextLine().replaceAll(" ", "").toUpperCase();
             if (!respectsFormat(posicion)) {
-                System.out.println("Formato de entrada: letra+numero");
+                System.out.println("Formato de entrada: (A-J)(0-9)");
                 continue;
             }
             letra = posicion.charAt(0)-'A';
