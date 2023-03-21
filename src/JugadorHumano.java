@@ -10,10 +10,12 @@ public class JugadorHumano extends Jugador {
     @Override
     public void colocarBarcos() {
         GameManager.limpiarConsola();
+        String position = "";
         String rspt = "";
-        int letra;
-        int num;
+        int letra = 0;
+        int num = 0;
         for (var barco : getBarcos()) {
+            boolean rf = true;
             GameManager.limpiarConsola();
             getTablero().showTablero();
             barco.mostrarBarco();
@@ -27,6 +29,13 @@ public class JugadorHumano extends Jugador {
                     rspt = sc.nextLine();
                 }
                 String posicion = rspt.replace(" ", "").toUpperCase();
+                if (!respectsFormat(posicion)) {
+                    System.out.println("Formato de entrada: letra+numero");
+                    rf = false;
+                    continue;
+                } else {
+                    rf = true;
+                }
                 letra = posicion.charAt(0)-'A';
                 num = posicion.charAt(1)-'0';
                 if (!isInTablero(barco, letra, num)) {
@@ -36,7 +45,7 @@ public class JugadorHumano extends Jugador {
                 if (pisaBarco(barco, letra, num)) {
                     System.out.println("Se superpone con otro barco");
                 }
-            } while (!colocarBarco(barco, false, letra, num));
+            } while (!rf || !colocarBarco(barco, false, letra, num));
 
         }
     }
@@ -49,9 +58,10 @@ public class JugadorHumano extends Jugador {
         int letra = 0;
         int num = 0;
         do {
+            System.out.print("Coordenada de lanzamiento: ");
             posicion = sc.nextLine().replaceAll(" ", "").toUpperCase();
             if (!respectsFormat(posicion)) {
-                System.out.println("Formato de entrada: numero+letra");
+                System.out.println("Formato de entrada: letra+numero");
                 continue;
             }
             letra = posicion.charAt(0)-'A';

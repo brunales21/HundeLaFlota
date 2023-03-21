@@ -5,7 +5,7 @@ public class JugadorBot extends Jugador {
 
     public JugadorBot(Barco[] barcos) {
         super(barcos);
-        super.setNombre(Color.RESET+"ROBOTS NAVY");
+        super.setNombre(Color.RED+"ROBOTS NAVY");
     }
 
     @Override

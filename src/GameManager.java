@@ -81,19 +81,27 @@ public class GameManager {
     public void mostrarTableros() {
         limpiarConsola();
         for (int i = 0; i < jugadores.length; i++) {
-            System.out.println(Color.RESET+"Flota de "+jugadores[i].getNombre());
-            jugadores[i].getTablero().showTablero();
+            saltosDeLinea(1);
+            if (jugadores[i].getClass().getName().equals("JugadorHumano")) {
+                System.out.println(Color.GREEN+"Flota de "+jugadores[i].getNombre()+Color.RESET);
+            } else {
+                System.out.println(Color.RED+"Flota de "+jugadores[i].getNombre()+Color.RESET);
+            }
             int barcos = jugadores[i].getCantidadBarcosFlotando();
             if (barcos > 2) {
-                System.out.println(Color.GREEN_BRIGHT + "Barcos: " + jugadores[i].getCantidadBarcosFlotando());
+                System.out.println("Barcos flotando: " + jugadores[i].getCantidadBarcosFlotando());
             } else {
-                System.out.println(Color.GREEN_BRIGHT + "Barcos: " + Color.RED+jugadores[i].getCantidadBarcosFlotando());
+                System.out.println("Barcos flotando: " + Color.RED+jugadores[i].getCantidadBarcosFlotando());
 
             }
+            System.out.println(Color.RESET);
+            jugadores[i].getTablero().showTablero();
             if (i == jugadores.length - 1) {
+                saltosDeLinea(1);
                 return;
             }
-            System.out.println(Color.WHITE_BOLD_BRIGHT + "-----------------------");
+            saltosDeLinea(1);
+            System.out.println(Color.WHITE_BOLD_BRIGHT + "----------------------");
         }
     }
 
@@ -103,12 +111,12 @@ public class GameManager {
         saltosDeLinea(1);
         for (Jugador jugador: jugadores) {
             if (!jugador.lost()) {
-                System.out.println(Color.GREEN+"Flota ganadora: "+Color.RESET+jugador.getNombre());
-                System.out.println("Bombas lanzadas: "+jugador.getTiros());
+                System.out.println(Color.GREEN+"Flota ganadora: "+jugador.getNombre());
+                System.out.println(Color.RESET+"Bombas lanzadas: "+jugador.getTiros());
             }
             if (jugador.lost()) {
-                System.out.println(Color.RED+"Flota perdedora: "+Color.RESET+jugador.getNombre());
-                System.out.println("Bombas lanzadas: "+jugador.getTiros());
+                System.out.println(Color.RED+"Flota perdedora: "+jugador.getNombre());
+                System.out.println(Color.RESET+"Bombas lanzadas: "+jugador.getTiros());
             }
         }
     }
