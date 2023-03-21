@@ -13,7 +13,7 @@ public abstract class Jugador {
             return false;
         }
         for (var parte : barco.getPartes()) {
-            if (parte.getX() == 0 && parte.getY() == 0) {
+            if (!parte.getSkin().isBrigthBackground() && parte.getX() == 0 && parte.getY() == 0) {
                 parte.getSkin().setBackgroundColorToBright();
             }
             getTablero().getCasillas()[parte.getX() + x][parte.getY() + y].setPdb(parte);
@@ -41,17 +41,11 @@ public abstract class Jugador {
     }
 
     public boolean isParteInTablero(int x, int y) {
-        if (x >= 0 && y < Tablero.HEIGHT && x < Tablero.WIDTH && y >= 0) {
-            return true;
-        }
-        return false;
+        return x >= 0 && y < Tablero.HEIGHT && x < Tablero.WIDTH && y >= 0;
     }
 
     public boolean fitsInTablero(Barco barco, int x, int y) {
-        if (!isInTablero(barco,x, y) || pisaBarco(barco, x, y)) {
-            return false;
-        }
-        return true;
+        return isInTablero(barco, x, y) && !pisaBarco(barco, x, y);
     }
 
 

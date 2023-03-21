@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class JugadorHumano extends Jugador {
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
     public JugadorHumano(Barco[] barcos) {
         super(barcos);
@@ -10,12 +10,11 @@ public class JugadorHumano extends Jugador {
     @Override
     public void colocarBarcos() {
         GameManager.limpiarConsola();
-        String position = "";
         String rspt = "";
         int letra = 0;
         int num = 0;
+        boolean rf;
         for (var barco : getBarcos()) {
-            boolean rf = true;
             GameManager.limpiarConsola();
             getTablero().showTablero();
             barco.mostrarBarco();
@@ -80,10 +79,7 @@ public class JugadorHumano extends Jugador {
 
     private boolean respectsFormat(String position) {
         if (position.length() == 2) {
-            if (!isBetween(65, 75, position.charAt(0)) || !isBetween(48, 57, position.charAt(1))) {
-                return false;
-            }
-            return true;
+            return isBetween(65, 75, position.charAt(0)) && isBetween(48, 57, position.charAt(1));
         }
         return false;
     }

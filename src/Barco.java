@@ -1,5 +1,3 @@
-import java.util.function.IntFunction;
-
 public class Barco {
     private final ParteDeBarco[] partes;
     private boolean isHundido = false;
@@ -7,7 +5,7 @@ public class Barco {
 
     public Barco(ParteDeBarco[] partes) {
         this.partes = partes;
-        for (var parte: partes) {
+        for (var parte : partes) {
             parte.setBarco(this);
         }
     }
@@ -20,20 +18,20 @@ public class Barco {
                 tBarco[i][j].getSkin().setBackgroundColor("");
             }
         }
-        for (int p = 0; p<partes.length; p++) {
-            tBarco[4+this.partes[p].getX()][4+this.partes[p].getY()].setPdb(partes[p]);
+        for (ParteDeBarco parte : partes) {
+            tBarco[4 + parte.getX()][4 + parte.getY()].setPdb(parte);
         }
-        for (int i = 0; i < tBarco.length; i++) {
-            for (int j = 0; j < tBarco[i].length; j++) {
-                System.out.print(tBarco[i][j]);
+        for (Casilla[] casillas : tBarco) {
+            for (Casilla casilla : casillas) {
+                System.out.print(casilla);
             }
             System.out.println();
         }
     }
 
-    public Barco rotarBarco() {
-        for (ParteDeBarco parte: partes) {
-            if (parte.getSkin().isBrigthBackground() && parte.getX()==0&&parte.getY()==0) {
+    public void rotarBarco() {
+        for (ParteDeBarco parte : partes) {
+            if (parte.getSkin().isBrigthBackground() && parte.getX() == 0 && parte.getY() == 0) {
                 //parte.getSkin().setBackgroundColorToBright();
                 parte.getSkin().setBackgroundColorToNormal();
             }
@@ -41,15 +39,15 @@ public class Barco {
             parte.setX(parte.getY());
             parte.setY(-aux);
         }
-        return this;
     }
 
     public ParteDeBarco[] getPartes() {
         return partes;
     }
+
     public void setBarcoToHundido() {
         this.isHundido = true;
-        for (ParteDeBarco parte: partes) {
+        for (ParteDeBarco parte : partes) {
             parte.getSkin().setBackgroundColor(Color.RED_BACKGROUND);
 
         }
@@ -59,7 +57,6 @@ public class Barco {
     public boolean isHundido() {
         return partes.length == getPdbHundidasCount();
     }
-
 
 
     public int getPdbHundidasCount() {

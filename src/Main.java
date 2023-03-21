@@ -35,63 +35,6 @@ public class Main {
         } while (true);
         gm.mostrarResultados();
 
-
-/*
-        GameManager gm = new GameManager();
-        FabricaDeBarcos fb = new FabricaDeBarcos();
-
-        Jugador jh = new JugadorHumano(fb.getNewBarcos());
-        Jugador jb = new JugadorBot(fb.getNewBarcos());
-
-        gm.addPlayer(jb);
-        gm.addPlayer(jh);
-
-        gm.initTableros();
-        jb.colocarBarcos();
-        jh.colocarBarcos();
-
-        do {
-            gm.mostrarTableros();
-            jh.lanzarBomba(jb);
-            jb.lanzarBomba(jh);
-
-        } while (true);
-
- */
-
-
-
-        /*
-
-        GameManager gm = new GameManager();
-        FabricaDeBarcos fb = new FabricaDeBarcos();
-
-        Jugador jh = new JugadorHumano(fb.getNewBarcos());
-        Jugador jb = new JugadorBot(fb.getNewBarcos());
-
-        gm.addPlayer(jb);
-        gm.addPlayer(jh);
-
-        gm.initTableros();
-        jb.colocarBarcos();
-        jh.colocarBarcos();
-
-        do {
-            gm.mostrarTableros();
-            jh.lanzarBomba(jb);
-            jb.lanzarBomba(jh);
-            gm.limpiarConsola();
-            if (jh.lost()) {
-                System.out.println("Perdiste!");
-                break;
-            } else if (jb.lost()) {
-                System.out.println("Ganaste!");
-                break;
-            }
-        } while (true);
-
-
-         */
     }
 }
 
