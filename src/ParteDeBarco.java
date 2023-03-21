@@ -11,6 +11,7 @@ public class ParteDeBarco {
         this.skin = skin;
         this.x = x;
         this.y = y;
+
     }
 
     public int getX() {
