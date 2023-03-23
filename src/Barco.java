@@ -31,10 +31,6 @@ public class Barco {
 
     public void rotarBarco() {
         for (ParteDeBarco parte : partes) {
-            if (parte.getSkin().isBrigthBackground() && parte.getX() == 0 && parte.getY() == 0) {
-                //parte.getSkin().setBackgroundColorToBright();
-                parte.getSkin().setBackgroundColorToNormal();
-            }
             int aux = parte.getX();
             parte.setX(parte.getY());
             parte.setY(-aux);

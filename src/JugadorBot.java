@@ -13,7 +13,8 @@ public class JugadorBot extends Jugador {
         int posicionX;
         int posicionY;
         for (var barco : getBarcos()) {
-            for (int i = 0; i <= random.nextInt(4); i++) {
+            int rand = random.nextInt(4);
+            for (int i = 0; i <= rand; i++) {
                 barco.rotarBarco();
             }
             do {
